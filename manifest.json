@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "网站图片替换插件",
+  "version": "1.0",
+  "description": "网站脱敏换图插件",
+  "permissions": ["scripting", "activeTab", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

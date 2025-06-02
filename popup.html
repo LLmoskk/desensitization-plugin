@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>网站图片替换插件</title>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            width: 350px;
+            padding: 15px;
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+        }
+        h3 {
+            margin-top: 20px;
+            color: #333;
+        }
+        .input-group {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .input-field {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+        button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3367d6;
+        }
+        .list-container {
+            margin-top: 15px;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        .item-text {
+            word-break: break-all;
+            flex-grow: 1;
+        }
+        .delete-btn {
+            background-color: #db4437;
+            margin-left: 8px;
+        }
+        .delete-btn:hover {
+            background-color: #c53929;
+        }
+        .empty-list {
+            text-align: center;
+            color: #666;
+            padding: 10px;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            margin-bottom: -1px;
+        }
+        .tab.active {
+            border: 1px solid #ddd;
+            border-bottom: 1px solid white;
+            background-color: white;
+            border-radius: 4px 4px 0 0;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            margin-left: 10px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4285f4;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .setting-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+        .setting-label {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <h2>图片替换与文本脱敏设置</h2>
+
+    <div class="setting-row">
+        <span class="setting-label">替换图片为随机图片</span>
+        <label class="switch">
+            <input type="checkbox" id="replaceImagesToggle" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" data-tab="websites">受影响网站管理</div>
+        <div class="tab" data-tab="words">敏感词管理</div>
+    </div>
+
+    <div class="tab-content active" id="websites-content">
+        <div class="input-group">
+            <input type="text" id="urlInput" class="input-field" placeholder="请输入网站地址（如：example.com）">
+            <button id="addUrlButton">添加</button>
+        </div>
+
+        <div id="urlList" class="list-container">
+            <div class="empty-list">暂无添加的网站</div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="words-content">
+        <div class="input-group">
+            <input type="text" id="wordInput" class="input-field" placeholder="请输入需要脱敏的文本">
+            <button id="addWordButton">添加</button>
+        </div>
+
+        <div id="wordList" class="list-container">
+            <div class="empty-list">暂无添加的敏感词</div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
