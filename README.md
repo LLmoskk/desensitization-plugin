@@ -16,3 +16,12 @@
 5. 选择本插件所在的文件夹
 
 ## 使用方法
+
+这里使用美团技术团队的 Blog 举例 (无冒犯的意思随便找的)
+
+![image](https://github.com/user-attachments/assets/60559cee-5a60-47b4-b362-dd7b08cd2921)
+
+呈现效果将 "美团" -> "**"
+
+![image](https://github.com/user-attachments/assets/41b88969-6018-402b-91de-8cae4aff2f93)
+
